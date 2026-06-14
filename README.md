@@ -8,5 +8,6 @@ claude code 自己的官方文档写的太不适合人类阅读了，很多地�
 
 ## claude code 学习路线
 
-1.  [宏观认识Claude code.md](宏观认识Claude code.md) 
-2.  [Claude可调用的工具.md](Claude可调用的工具.md) 
+1.  [宏观认识Claude code.md](宏观认识Claude code.md)
+2.  [Claude可调用的工具.md](Claude可调用的工具.md)
+
