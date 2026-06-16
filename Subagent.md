@@ -6,9 +6,17 @@ claude 启动时会默认生成一个主Agent，前边学习过 [宏观认识Cla
 
 ## subagent 分类
 
-claude code 的subagent 可以分为3类：命名subagent, fork subagent, 动态派生subagent。
+claude code 的subagent 可以分为两类：命名subagent, fork subagent。fork subagent 比较简单，我们先介绍。
 
-<img src="assets/50a39611f2daff0b004cc8fc6867902b.png" alt="50a39611f2daff0b004cc8fc6867902b"  />
+### Fork subagent
+
+fork subagent 就像git分支一样，是从主Agent中分叉出的一个临时分支，它继承到目前为止的整个对话，而不是从头开始。
+
+![image-20260614210750849](assets/image-20260614210750849.png)
+
+可以使用`/frok`或`/branch` 手动启动一个subagent，启动后，该Agent就会变为一个新会话的独立主Agent，但是保留了源分支的上下文。
+
+
 
 ### 命名subagent
 
