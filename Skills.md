@@ -36,7 +36,7 @@ my-skill/
 | `allowed-tools`            | 否   | 当此 skill 处于活动状态时，Claude 可以使用而**无需请求权限**的工具。接受空格分隔的字符串或 YAML 列表。后续会在权限部分详解。 |                                                              |
 | `disallowed-tools`         | 否   | 当此 skill 处于活动状态时从 Claude 的可用工具池中移除的工具。用于不应该调用某些工具的自主 skills，例如用于后台循环的 `AskUserQuestion`。接受空格分隔的字符串或 YAML 列表。当你发送下一条消息时，限制会清除。 | <img src="assets/f50ad9742125b7d3e1e58502c057ef96.png" alt="f50ad9742125b7d3e1e58502c057ef96" style="zoom: 25%;" /> |
 | `model`                    | 否   | 当此 skill 处于活动状态时要使用的模型。覆盖适用于当前轮的其余部分，不保存到设置；会话模型在你的下一个提示时恢复。接受与 [`/model`](https://code.claude.com/docs/zh-CN/model-config) 相同的值，或 `inherit` 以保持活动模型。 |                                                              |
-| `effort`                   | 否   | 当此 skill 处于活动状态时的[工作量级别](https://code.claude.com/docs/zh-CN/model-config#adjust-effort-level)。覆盖会话工作量级别。默认值：继承自会话。选项：`low`、`medium`、`high`、`xhigh`、`max`；可用级别取决于模型。 |                                                              |
+| `effort`                   | 否   | 默认继承自会话，详见[effort](琐碎内容.md#effort)             |                                                              |
 | `context`                  | 否   | 设置为 `fork` 以在分叉的 subagent 上下文中运行。subagent 会有自己的上下文窗口，当subagent结束时仅将结果返回给主Agent, 不会将大量对主线任务无关的内容带到主Agent的上下文中。 |                                                              |
 | `agent`                    | 否   | 当设置 `context: fork` 时要使用的 subagent 类型。            |                                                              |
 | `hooks`                    | 否   | 限定于此 skill 生命周期的 hooks。有关配置格式，请参阅 [Skills 和代理中的 Hooks](https://code.claude.com/docs/zh-CN/hooks#hooks-in-skills-and-agents)。 |                                                              |
