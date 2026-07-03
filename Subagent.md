@@ -83,7 +83,7 @@ claude --agents '{
 
 ### 编写subagent 文件
 
-#### 支持的frontmatter字段
+支持的frontmatter字段如下表
 
 | Field             | 必需 | Description                                                  | 配置示例                                                     |
 | :---------------- | :--- | :----------------------------------------------------------- | ------------------------------------------------------------ |
@@ -97,9 +97,9 @@ claude --agents '{
 | `skills`          | 否   | 在启动时加载skill到 subagent 的上下文中。注入完整的技能内容，而不仅仅是描述。通过此方式可以调用未出现在skill列表中的技能。<br />此方法可以保证skill 内容一定可以被加载到上下文，避免由于渐进披露导致需要的内容获取不到。 | ![Clipboard_Screenshot_1781600505](assets/Clipboard_Screenshot_1781600505.png) |
 | `mcpServers`      | 否   | [MCP servers](https://code.claude.com/docs/zh-CN/mcp) 对此 subagent 可用。每个条目要么是引用已配置服务器的服务器名称（例如，`"slack"`），要么是内联定义，其中服务器名称为键，完整的 [MCP server config](https://code.claude.com/docs/zh-CN/mcp#installing-mcp-servers) 为值。对于 [plugin subagents](https://code.claude.com/docs/zh-CN/sub-agents#choose-the-subagent-scope) 被忽略 |                                                              |
 | `hooks`           | 否   | [Lifecycle hooks](https://code.claude.com/docs/zh-CN/sub-agents#define-hooks-for-subagents) 限定于此 subagent。对于 [plugin subagents](https://code.claude.com/docs/zh-CN/sub-agents#choose-the-subagent-scope) 被忽略 |                                                              |
-| `memory`          | 否   | `user`、`project` 或 `local`。启用跨会话学习                 |                                                              |
+| `memory`          | 否   | subagent 的记忆，支持三个持久化层级`user`、`project` 或 `local`。 | ![Clipboard_Screenshot_1782435656](assets/Clipboard_Screenshot_1782435656.png) |
 | `background`      | 否   | 设置为 `true` 以始终将此 subagent 作为 background 任务运行。默认：`false` |                                                              |
 | `effort`          | 否   | 默认：从会话继承。详见[effort](琐碎内容.md#effort)           |                                                              |
-| `isolation`       | 否   | 设置为 `worktree` 以在临时 [git worktree](https://code.claude.com/docs/zh-CN/worktrees) 中运行 subagent，为其提供存储库的隔离副本，默认从您的 [default branch](https://code.claude.com/docs/zh-CN/worktrees#choose-the-base-branch) 分支，而不是父会话的 `HEAD`。如果 subagent 不进行任何更改，worktree 会自动清理 |                                                              |
+| `isolation`       | 否   | 设置为 `worktree` 以在临时 git worktree中运行 subagent，为其提供存储库的隔离副本，默认从您的 default branch分支，而不是父会话的 `HEAD`。如果 subagent 不进行任何更改，worktree 会自动清理 |                                                              |
 | `color`           | 否   | Subagent 在任务列表和转录中的显示颜色。接受 `red`、`blue`、`green`、`yellow`、`purple`、`orange`、`pink` 或 `cyan` |                                                              |
-| `initialPrompt`   | 否   | 当此代理作为主会话代理运行时（通过 `--agent` 或 `agent` 设置），自动提交为第一个用户轮次。[Commands](https://code.claude.com/docs/zh-CN/commands) 和 [skills](https://code.claude.com/docs/zh-CN/skills) 被处理。前置于任何用户提供的提示 |                                                              |
+| `initialPrompt`   | 否   | 当此代理作为主会话代理运行时（通过 `--agent` 或 `agent` 设置），自动提交为第一个用户轮次。[Commands](https://code.claude.com/docs/zh-CN/commands) 和 [skills](https://code.claude.com/docs/zh-CN/skills) 被处理。前置于任何用户提供的提示 | ![image-20260702075835113](assets/image-20260702075835113.png) |
