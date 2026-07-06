@@ -72,7 +72,7 @@ claude --agents '{
 claude --agents '{
   "validator": {"description":"Validate quality","prompt":"Check standards","tools":["Read","Grep"]},
   "fixer":     {"description":"Fix issues","prompt":"Fix code","tools":["Read","Edit","Write"]}
-}' --print 
+}' --print
 ```
 
 先校验质量，再修复发现的问题
@@ -91,7 +91,7 @@ claude --agents '{
 | `description`     | 是   | Claude 何时应该委托给此 subagent                             |                                                              |
 | `tools`           | 否   | subagent 可以使用的工具，详见 [Claude可调用的工具.md](Claude可调用的工具.md) 。如果省略，继承所有工具。 |                                                              |
 | `disallowedTools` | 否   | 要拒绝的工具，从继承或指定的列表中删除                       |                                                              |
-| `model`           | 否   | agent 使用的模型`sonnet`、`opus`、`haiku`、完整模型 ID（例如，`claude-opus-4-8`）或 `inherit`。默认为 `inherit` |                                                              |
+| `model`           | 否   | agent 使用的模型`sonnet`、`opus`、`haiku`、完整模型 ID（例如，`claude-opus-4-8`）或 `inherit`。默认为 `inherit`。详见  [CLaude code 模型](琐碎内容.md#Claude code 模型) |                                                              |
 | `permissionMode`  | 否   | `default`、`acceptEdits`、`auto`、`dontAsk`、`bypassPermissions` 或 `plan`。对于 [plugin subagents](https://code.claude.com/docs/zh-CN/sub-agents#choose-the-subagent-scope) 被忽略。详见[权限模式 ](权限.md#权限模式) |                                                              |
 | `maxTurns`        | 否   | subagent 停止前的最大代理轮数。不设置默认无限制，存在可能无限执行的风险，消耗token。保险起见，还是设置一下<br />假设你设置了 `maxTurns: 3`，一个典型的执行流程：<br />轮次 1: subagent 分析问题 → 调用 Grep 工具搜索文件 ✓ (计数)<br/>轮次 2: 基于搜索结果 → 调用 Read 工具阅读代码 ✓ (计数)<br/>轮次 3: 基于代码理解 → 调用 Edit 工具修改代码 ✓ (计数)<br/>轮次 4: 生成总结报告，无工具调用 ✗ (不计数) → 允许执行<br/>轮次 5: 用户提出新问题 → 尝试调用工具时被阻止 ❌ |                                                              |
 | `skills`          | 否   | 在启动时加载skill到 subagent 的上下文中。注入完整的技能内容，而不仅仅是描述。通过此方式可以调用未出现在skill列表中的技能。<br />此方法可以保证skill 内容一定可以被加载到上下文，避免由于渐进披露导致需要的内容获取不到。 | ![Clipboard_Screenshot_1781600505](assets/Clipboard_Screenshot_1781600505.png) |
